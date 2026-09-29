@@ -1,0 +1,2137 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Lighting Proposal — 179 Young St, Sunnybank</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --paper: #faf8f4;
+      --card: #ffffff;
+      --ink: #1c1a17;
+      --muted: #6b655c;
+      --line: #e4dfd6;
+      --accent: #8a6d3b;
+      --amber: #e8b45a;
+      --gold: #b08a3e;
+      --dark: #211e19;
+      --serif: "Fraunces", Georgia, serif;
+      --sans: "Inter", -apple-system, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.55
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 48px 64px
+    }
+
+    svg {
+      display: block
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      background: var(--dark);
+      color: #f2efe8;
+      margin: 0 0 56px;
+      padding: 64px 48px 56px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -140px;
+      right: -80px;
+      width: 560px;
+      height: 560px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232, 180, 90, .22), rgba(232, 180, 90, .05) 45%, transparent 70%);
+      pointer-events: none
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -180px;
+      left: -120px;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232, 180, 90, .10), transparent 65%);
+      pointer-events: none
+    }
+
+    .hero-inner {
+      max-width: 1024px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.4fr .9fr;
+      gap: 40px;
+      align-items: center
+    }
+
+    .kicker {
+      font-size: 12px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--amber);
+      font-weight: 600;
+      margin-bottom: 16px
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 46px;
+      line-height: 1.1;
+      letter-spacing: -.015em;
+      max-width: 600px
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--amber)
+    }
+
+    .hero .sub {
+      margin-top: 18px;
+      font-size: 16px;
+      color: #c9c3b7;
+      max-width: 520px;
+      line-height: 1.65
+    }
+
+    .meta {
+      display: flex;
+      gap: 40px;
+      margin-top: 30px;
+      flex-wrap: wrap
+    }
+
+    .meta div {
+      font-size: 13px;
+      color: #efece5
+    }
+
+    .meta .lbl {
+      color: #8f887a;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 10.5px;
+      margin-bottom: 3px
+    }
+
+    .lamp {
+      width: 100%;
+      max-width: 340px;
+      margin: 0 auto
+    }
+
+    /* ============ INTRO ============ */
+    .intro {
+      max-width: 760px;
+      font-size: 16.5px;
+      line-height: 1.7;
+      color: #3a362f;
+      margin: 0 auto 52px;
+      text-align: center
+    }
+
+    .intro strong {
+      font-weight: 600;
+      color: var(--ink)
+    }
+
+    /* ============ TIER CARDS ============ */
+    .tiers {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 22px;
+      margin-bottom: 14px;
+      align-items: stretch
+    }
+
+    .tier {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative
+    }
+
+    .tier.featured {
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 14px 40px rgba(176, 138, 62, .16);
+      transform: translateY(-6px)
+    }
+
+    .page > .tiers > .tier.featured,
+    .network-proposal > .tiers > .tier.featured {
+      transform: none
+    }
+
+    .tier-band {
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      position: relative
+    }
+
+    .band-silver {
+      background: linear-gradient(135deg, #f4f4f2 0%, #e1e0dc 24%, #fafaf8 49%, #d5d4d0 74%, #f0efec 100%)
+    }
+
+    .band-gold {
+      background: linear-gradient(135deg, #f8f3e8 0%, #dcc89c 25%, #fffaf0 50%, #c7ad76 76%, #f0e5ce 100%)
+    }
+
+    .band-platinum {
+      background: linear-gradient(135deg, #f0f2f4 0%, #cdd2d7 25%, #fbfcfd 50%, #bcc2c8 76%, #e6e9ec 100%)
+    }
+
+    .recommended-badge {
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      z-index: 1;
+      padding: 4px 10px;
+      border: 1px solid rgba(111, 82, 31, .3);
+      border-radius: 999px;
+      background: rgba(255, 250, 239, .94);
+      color: #665126;
+      font-size: 9px;
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      white-space: nowrap
+    }
+
+    .tier-body {
+      padding: 24px 26px 26px;
+      display: flex;
+      flex-direction: column;
+      flex: 1
+    }
+
+    .tier h2 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 27px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 9px
+    }
+
+    .tier h2 .tic {
+      width: 24px;
+      height: 24px;
+      flex: none
+    }
+
+    .tier[data-tier="silver"] .tic {
+      color: #9a958c
+    }
+
+    .tier[data-tier="gold"] .tic {
+      color: #b08a3e
+    }
+
+    .tier[data-tier="platinum"] .tic {
+      color: #7d8794
+    }
+
+    .tier .tag {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 12px;
+      min-height: 0
+    }
+
+    .tier.featured .tag {
+      min-height: 18px
+    }
+
+    ul.specs {
+      list-style: none
+    }
+
+    ul.specs li {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 7px 0;
+      border-top: 1px dashed #ece7dc;
+      font-size: 13.5px
+    }
+
+    ul.specs li:first-child {
+      border-top: none
+    }
+
+    ul.specs .k {
+      color: var(--muted);
+      font-size: 12.5px;
+      flex: 0 0 auto
+    }
+
+    ul.specs .v {
+      margin-left: auto;
+      text-align: right;
+      font-weight: 600
+    }
+
+    ul.specs .v.none {
+      font-weight: 400;
+      color: #bdb6a8
+    }
+
+    ul.specs .v.yes {
+      margin-left: auto;
+      display: inline-flex
+    }
+
+    ul.specs .tk {
+      width: 16px;
+      height: 16px;
+      display: block
+    }
+
+    .price {
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline
+    }
+
+    .price .amt {
+      font-family: var(--serif);
+      font-size: 25px;
+      font-weight: 600
+    }
+
+    .price .note {
+      font-size: 11.5px;
+      color: var(--muted)
+    }
+
+    .tier-foot {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 56px;
+      text-align: center
+    }
+
+    .network-proposal {
+      margin-top: 64px
+    }
+
+    .network-proposal .network-intro {
+      max-width: none;
+      margin: 0 0 32px;
+      text-align: left
+    }
+
+    .network-proposal .network-intro strong {
+      color: var(--ink)
+    }
+
+    .network-proposal .tier-foot {
+      margin-bottom: 56px
+    }
+
+    .network-proposal .tier-tag {
+      min-height: 0;
+      color: var(--ink);
+      font-weight: 600
+    }
+
+    .network-proposal .tier[data-tier="gold"] .tier-tag {
+      min-height: 0
+    }
+
+    .network-proposal .network-specs .k {
+      color: var(--ink);
+      font-size: 12.5px
+    }
+
+    .network-proposal .network-specs .v {
+      font-weight: 500
+    }
+
+    .network-proposal .network-detail {
+      color: var(--muted);
+      font-weight: 400;
+      font-size: 12px
+    }
+
+    .network-proposal .network-price-note {
+      max-width: 175px;
+      text-align: right;
+      line-height: 1.4
+    }
+
+    .network-proposal .price .amt {
+      font-size: 23px
+    }
+
+    .finish-panel {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 28px 30px;
+      margin: 0 0 48px
+    }
+
+    .finish-panel h3 {
+      font-family: var(--serif);
+      font-size: 24px;
+      margin: 0 0 6px
+    }
+
+    .finish-panel .lede {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 18px;
+      max-width: 760px
+    }
+
+    .range-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px 2px 8px;
+      margin-bottom: 14px;
+      scrollbar-width: thin
+    }
+
+    .range-tab {
+      flex: 1 0 auto;
+      min-height: 44px;
+      padding: 9px 16px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #faf9f6;
+      color: var(--ink);
+      font: 600 13px var(--sans);
+      cursor: pointer
+    }
+
+    .range-tab[aria-selected="true"] {
+      border-color: var(--gold);
+      background: #f4efe4;
+      color: #5a482b;
+      box-shadow: inset 0 -2px 0 var(--gold)
+    }
+
+    .range-tab:focus-visible,
+    .carousel-arrow:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px
+    }
+
+    .finish-carousel {
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr) 44px;
+      align-items: center;
+      gap: 12px;
+      max-width: 700px;
+      margin: 0 auto
+    }
+
+    .finish-slide {
+      margin: 0;
+      min-width: 0;
+      touch-action: pan-y
+    }
+
+    .finish-shot {
+      height: 340px;
+      min-height: 0;
+      grid-template-rows: minmax(0, 1fr);
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: #fff
+    }
+
+    .finish-shot img {
+      min-width: 0;
+      min-height: 0;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: 100%;
+      object-fit: contain;
+      display: block
+    }
+
+    .finish-slide figcaption {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 9px;
+      font-size: 14px;
+      font-weight: 650
+    }
+
+    .finish-slide figcaption a {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      white-space: nowrap
+    }
+
+    .finish-count {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500
+    }
+
+    .carousel-arrow {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: #fff;
+      color: var(--ink);
+      font-size: 26px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(22, 32, 36, .08);
+      transition: background .2s ease, transform .2s ease
+    }
+
+    .carousel-arrow:hover {
+      background: var(--paper);
+      transform: scale(1.05)
+    }
+
+    .swipe-hint {
+      margin: 8px auto 0;
+      max-width: 700px;
+      font-size: 11.5px;
+      color: var(--muted);
+      text-align: center
+    }
+
+    .finish-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 16px
+    }
+
+    @media(max-width:600px) {
+      .finish-carousel {
+        grid-template-columns: 38px minmax(0, 1fr) 38px;
+        gap: 6px
+      }
+
+      .carousel-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 23px
+      }
+
+      .finish-shot {
+        height: 250px
+      }
+
+      .finish-panel {
+        padding: 24px 18px
+      }
+
+      .range-tab {
+        padding: 8px 12px;
+        font-size: 12px
+      }
+
+      .finish-slide figcaption {
+        font-size: 12px
+      }
+    }
+
+    /* ============ LIGHTING DEMO ============ */
+    .demo {
+      background: #23211d;
+      color: #efece5;
+      border-radius: 14px;
+      padding: 34px 36px;
+      margin: 0 0 52px
+    }
+
+    .demo-head {
+      margin-bottom: 22px
+    }
+
+    .demo-head .eyebrow {
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--amber);
+      font-weight: 600;
+      margin-bottom: 5px
+    }
+
+    .demo-head h3 {
+      font-family: var(--serif);
+      font-size: 26px;
+      color: #fff;
+      margin-bottom: 5px
+    }
+
+    .demo-head p {
+      font-size: 13px;
+      color: #b8b2a6;
+      max-width: 680px
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px
+    }
+
+    .demo-card {
+      background: #302c25;
+      border: 1px solid #494337;
+      border-radius: 10px;
+      padding: 22px
+    }
+
+    .demo-card h4 {
+      font-size: 14px;
+      color: #fff;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px
+    }
+
+    .demo-card .mini {
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #e8b45a
+    }
+
+    .demo-card.group .pair {
+      display: flex;
+      gap: 16px;
+      justify-content: center
+    }
+
+    .pair-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px
+    }
+
+    .demo-card .desc {
+      font-size: 12px;
+      color: #b8b2a6;
+      margin-top: 12px;
+      min-height: 0
+    }
+
+    .lamp-demo {
+      height: 106px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      margin: 8px 0 14px
+    }
+
+    .bulb {
+      width: 50px;
+      height: 68px;
+      opacity: .5;
+      filter: none;
+      transition: opacity .85s ease, filter .85s ease
+    }
+
+    .lamp-demo.is-on .bulb {
+      opacity: 1;
+      filter: drop-shadow(0 0 8px rgba(255, 203, 99, .75)) drop-shadow(0 0 20px rgba(255, 203, 99, .45))
+    }
+
+    .lamp-demo.instant,
+    .lamp-demo.instant .bulb {
+      transition: none
+    }
+
+    .demo-control {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .demo button {
+      min-height: 44px;
+      border: 1px solid #b89960;
+      border-radius: 6px;
+      padding: 9px 16px;
+      background: #e8b45a;
+      color: #211e19;
+      font: 600 13px var(--sans);
+      cursor: pointer
+    }
+
+    .demo button:hover {
+      background: #f2ca83
+    }
+
+    .demo button:focus-visible {
+      outline: 3px solid #f2ca83;
+      outline-offset: 3px
+    }
+
+    .demo output {
+      min-width: 38px;
+      font-size: 12px;
+      color: #f2ca83
+    }
+
+    .demo-hint {
+      margin-top: 12px;
+      font-size: 11.5px;
+      color: #a9a292
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+
+      .bulb,
+      .lamp-demo .bulb {
+        transition: none !important
+      }
+    }
+
+    /* ============ SECTIONS ============ */
+    .sec {
+      margin-bottom: 56px
+    }
+
+    .sec-head {
+      margin-bottom: 24px
+    }
+
+    .sec-head .k {
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 6px
+    }
+
+    .sec-head h3 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 28px
+    }
+
+    /* ============ SYSTEM DIAGRAM ============ */
+    .diagram {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 32px 30px 26px
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: 1fr auto 1.25fr auto 1.25fr;
+      gap: 14px;
+      align-items: center
+    }
+
+    .flow-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 0
+    }
+
+    .flow-label {
+      font-size: 10.5px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 2px
+    }
+
+    .flow-node {
+      background: #f7f4ee;
+      border: 1px solid #e0d8c8;
+      border-radius: 9px;
+      padding: 11px 13px;
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      line-height: 1.4
+    }
+
+    .flow-node.core {
+      background: var(--dark);
+      color: #fff;
+      font-weight: 700;
+      border-color: var(--dark)
+    }
+
+    .fic {
+      width: 17px;
+      height: 17px;
+      flex: 0 0 17px;
+      color: var(--accent);
+      margin-top: 1px
+    }
+
+    .flow-node.core .fic {
+      color: var(--amber)
+    }
+
+    .flow-core p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-top: 2px
+    }
+
+    .flow-arrow {
+      color: #c3b598;
+      font-size: 22px;
+      line-height: 1;
+      text-align: center
+    }
+
+    .diagram-cloud {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--line);
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center
+    }
+
+    /* ============ COMPARE ============ */
+    .table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 14px
+    }
+
+    .compare {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden
+    }
+
+    .compare th,
+    .compare td {
+      padding: 13px 18px;
+      font-size: 13.5px;
+      text-align: left;
+      border-top: 1px solid var(--line)
+    }
+
+    .compare thead th {
+      border-top: none;
+      background: #f4f0e8;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700
+    }
+
+    .compare thead th:nth-child(n+2),
+    .compare td:nth-child(n+2) {
+      text-align: center
+    }
+
+    .compare td:first-child {
+      font-weight: 500
+    }
+
+    .compare tr.hl td {
+      background: #faf6ec
+    }
+
+    .status-mark {
+      display: inline-block;
+      min-width: 1em;
+      font-size: 15px;
+      line-height: 1;
+      font-weight: 700;
+      vertical-align: middle
+    }
+
+    .status-mark.included {
+      color: var(--accent)
+    }
+
+    .status-mark.excluded {
+      color: var(--muted);
+      font-weight: 500
+    }
+
+    .sr {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0
+    }
+
+    .lvl {
+      display: inline-flex;
+      gap: 4px;
+      vertical-align: middle
+    }
+
+    .lvl i {
+      width: 14px;
+      height: 6px;
+      border-radius: 3px;
+      background: #e7e1d5
+    }
+
+    .lvl i.on {
+      background: var(--accent)
+    }
+
+    /* ============ FOUNDATION ============ */
+    .foundation {
+      background: var(--dark);
+      border-radius: 14px;
+      padding: 44px 44px 38px;
+      color: #efece5;
+      position: relative;
+      overflow: hidden
+    }
+
+    .foundation::before {
+      content: "";
+      position: absolute;
+      top: -120px;
+      left: 30%;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232, 180, 90, .12), transparent 65%);
+      pointer-events: none
+    }
+
+    .foundation h3 {
+      color: #fff;
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 26px;
+      margin-bottom: 6px;
+      position: relative
+    }
+
+    .foundation p.lede {
+      color: #b8b2a6;
+      font-size: 14px;
+      margin-bottom: 30px;
+      max-width: 620px;
+      position: relative
+    }
+
+    .found-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px 34px;
+      position: relative
+    }
+
+    .found-grid .item .ic {
+      margin-bottom: 10px
+    }
+
+    .found-grid .item .t {
+      font-weight: 600;
+      font-size: 14.5px;
+      margin-bottom: 4px;
+      color: #fff
+    }
+
+    .found-grid .item .d {
+      font-size: 12.5px;
+      color: #b8b2a6;
+      line-height: 1.55
+    }
+
+    /* ============ PROCESS ============ */
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      position: relative
+    }
+
+    .process::before {
+      content: "";
+      position: absolute;
+      top: 19px;
+      left: 8%;
+      right: 8%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), #d9c9a3);
+      z-index: 0
+    }
+
+    .step {
+      position: relative;
+      z-index: 1
+    }
+
+    .step .n {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--paper);
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 14px
+    }
+
+    .step .t {
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 4px
+    }
+
+    .step .d {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.55
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      font-size: 11.5px;
+      color: var(--muted);
+      line-height: 1.65
+    }
+
+    @media (max-width:900px) {
+      .hero-inner {
+        grid-template-columns: 1fr
+      }
+
+      .lamp {
+        display: none
+      }
+
+      .tiers,
+      .found-grid {
+        grid-template-columns: 1fr
+      }
+
+      .process {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .demo-grid {
+        grid-template-columns: 1fr
+      }
+
+      .swatches {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+      }
+
+      .flow {
+        grid-template-columns: 1fr;
+        gap: 10px
+      }
+
+      .flow-arrow {
+        transform: rotate(90deg);
+        font-size: 20px
+      }
+
+      .process::before {
+        display: none
+      }
+
+      .hero h1 {
+        font-size: 34px
+      }
+
+      .page {
+        padding: 0 20px 40px
+      }
+
+      .hero {
+        margin: 0 0 40px;
+        padding: 44px 24px
+      }
+    }
+
+    @media (max-width:560px) {
+      .demo {
+        padding: 26px 18px
+      }
+
+      .demo-card {
+        padding: 18px
+      }
+
+      .finish-panel {
+        padding: 24px 18px
+      }
+
+      .swatches {
+        gap: 12px 8px
+      }
+
+      .swatch {
+        font-size: 11px;
+        gap: 7px
+      }
+
+      .swatch-chip {
+        width: 27px;
+        height: 27px;
+        flex-basis: 27px
+      }
+
+      .diagram {
+        padding: 24px 18px 22px
+      }
+
+      .hero h1 {
+        font-size: 30px
+      }
+
+      .intro {
+        font-size: 15.5px
+      }
+
+      .sec-head h3 {
+        font-size: 24px
+      }
+
+      .foundation {
+        padding: 30px 22px 26px
+      }
+
+      .tier-band {
+        height: 128px
+      }
+
+      .tier.featured {
+        transform: none
+      }
+
+      .finish-note a {
+        display: inline-block;
+        padding: 6px 0
+      }
+
+      .demo button {
+        width: 100%
+      }
+
+      .demo-control {
+        gap: 10px
+      }
+    }
+
+    @media (max-width:640px) {
+      .table-wrap {
+        overflow: visible;
+        border-radius: 0
+      }
+
+      .compare {
+        min-width: 0;
+        border: 0;
+        background: transparent;
+        border-collapse: collapse
+      }
+
+      .compare thead {
+        display: none
+      }
+
+      .compare tbody,
+      .compare tr,
+      .compare td {
+        display: block;
+        width: auto
+      }
+
+      .compare tr {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        margin-bottom: 12px;
+        overflow: hidden
+      }
+
+      .compare tr.hl {
+        border-color: #e0d4b6
+      }
+
+      .compare td {
+        border-top: 1px solid var(--line);
+        padding: 9px 14px;
+        text-align: left
+      }
+
+      .compare td:first-child {
+        border-top: none;
+        background: #f4f0e8;
+        font-weight: 700;
+        font-size: 11px;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding: 10px 14px
+      }
+
+      .compare tr.hl td:first-child {
+        background: #f6efdd
+      }
+
+      .compare td[data-label]::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 10.5px;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-weight: 700;
+        margin-bottom: 2px
+      }
+
+      .compare td:not(:first-child) {
+        font-size: 13.5px
+      }
+
+      .compare tr.hl td {
+        background: transparent
+      }
+
+      .compare tr.hl td:first-child {
+        background: #f6efdd
+      }
+
+      .sr {
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        clip: auto;
+        font-size: 12.5px;
+        color: var(--muted)
+      }
+
+      .lvl+.sr {
+        margin-left: 8px
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff
+      }
+
+      .page {
+        max-width: none;
+        padding: 0
+      }
+
+      .hero {
+        margin: 0 0 36px
+      }
+
+      .tier,
+      .compare,
+      .foundation,
+      .diagram {
+        break-inside: avoid
+      }
+
+      .tier.featured {
+        transform: none
+      }
+
+      @page {
+        margin: 12mm
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HERO ================= -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="kicker">Smart Home Retrofit · Proposal</div>
+        <h1>Integrated lighting control, <em>three ways</em>.</h1>
+        <p class="sub">Smart lighting for 179 Young Street, Sunnybank. Choose the switch finish and level of control
+          that suit your home.</p>
+        <div class="meta">
+          <div>
+            <div class="lbl">Prepared by</div>Sam Lee &amp; Angus Wong
+          </div>
+          <div>
+            <div class="lbl">Date</div>25 September 2026
+          </div>
+          <div>
+            <div class="lbl">Version</div>Draft for client review
+          </div>
+        </div>
+      </div>
+      <svg class="lamp" viewBox="0 0 300 320" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="shade" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#3a352c" />
+            <stop offset="1" stop-color="#26221b" />
+          </linearGradient>
+          <radialGradient id="glow" cx=".5" cy=".25" r=".8">
+            <stop offset="0" stop-color="#e8b45a" stop-opacity=".55" />
+            <stop offset="1" stop-color="#e8b45a" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        <line x1="150" y1="0" x2="150" y2="86" stroke="#6b655c" stroke-width="2" />
+        <path d="M92 170 L138 86 Q150 74 162 86 L208 170 Q150 196 92 170Z" fill="url(#shade)" stroke="#8a6d3b"
+          stroke-width="1.5" />
+        <ellipse cx="150" cy="172" rx="58" ry="12" fill="#1c1a17" stroke="#8a6d3b" stroke-width="1.2" />
+        <circle cx="150" cy="176" r="10" fill="#f4d9a0" />
+        <path d="M150 186 L60 320 L240 320 Z" fill="url(#glow)" />
+        <circle cx="150" cy="176" r="26" fill="url(#glow)" />
+      </svg>
+    </div>
+  </div>
+
+  <div class="page">
+
+    <p class="intro">
+      Use the wall switches or phone app, and set routines such as lights turning on at sunset or switching off
+      overnight. Each tier includes the same core controls; the switch finish and added features change.
+    </p>
+
+    <!-- ================= TIERS ================= -->
+    <div class="tiers">
+      <div class="tier" data-tier="silver">
+        <div class="tier-band band-silver">
+        </div>
+        <div class="tier-body">
+          <h2><svg class="tic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+              aria-hidden="true">
+              <circle cx="12" cy="12" r="8.2" />
+              <circle cx="12" cy="12" r="3.2" stroke-dasharray="2.6 2.2" />
+            </svg>Silver</h2>
+          <p class="tag">Practical, everyday lighting control.</p>
+          <ul class="specs">
+            <li><span class="k">Lighting</span><span class="v">Basic smart switch replacement</span></li>
+            <li><span class="k">Dimming</span><span class="v none" role="img" aria-label="Not included">–</span></li>
+            <li><span class="k">Wall screens</span><span class="v">2×S, 1×M, 1×L</span></li>
+            <li><span class="k">Automations included</span><span class="v">5</span></li>
+            <li><span class="k">Automation capacity</span><span class="v">Up to 20</span></li>
+            <li><span class="k">Presence sensing</span><span class="v none" role="img"
+                aria-label="Not included">–</span></li>
+            <li><span class="k">Garage door</span><span class="v yes" role="img" aria-label="Included"><svg class="tk"
+                  viewBox="0 0 16 16" aria-hidden="true">
+                  <circle cx="8" cy="8" r="7" fill="none" stroke="#8a6d3b" stroke-width="1.5" />
+                  <path d="M5 8.2l2 2 4-4.4" stroke="#8a6d3b" stroke-width="1.6" fill="none" stroke-linecap="round" />
+                </svg></span></li>
+            <li><span class="k">Air conditioning</span><span class="v yes" role="img" aria-label="Included"><svg
+                  class="tk" viewBox="0 0 16 16" aria-hidden="true">
+                  <circle cx="8" cy="8" r="7" fill="none" stroke="#8a6d3b" stroke-width="1.5" />
+                  <path d="M5 8.2l2 2 4-4.4" stroke="#8a6d3b" stroke-width="1.6" fill="none" stroke-linecap="round" />
+                </svg></span></li>
+            <li><span class="k">Processing</span><span class="v">Responsive</span></li>
+            <li><span class="k">Remote access</span><span class="v">Nabu Casa (subscription)</span></li>
+            <li><span class="k">Support</span><span class="v">2 months</span></li>
+          </ul>
+          <div class="price"><span class="amt">$8,500</span><span class="note">indicative, inc GST</span></div>
+        </div>
+      </div>
+
+      <div class="tier featured" data-tier="gold">
+        <div class="tier-band band-gold">
+          <span class="recommended-badge">Recommended</span>
+        </div>
+        <div class="tier-body">
+          <h2><svg class="tic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+              aria-hidden="true">
+              <path d="M12 3.4l2.1 5.1 5.5.4-4.2 3.5 1.3 5.4L12 14.9l-4.7 2.9 1.3-5.4L4.4 8.9l5.5-.4z"
+                stroke-linejoin="round" />
+            </svg>Gold</h2>
+          <p class="tag">Designer switches and wall screens.</p>
+          <ul class="specs">
+            <li><span class="k">Lighting</span><span class="v">Existing switches converted to push-button</span></li>
+            <li><span class="k">Dimming</span><span class="v none" role="img" aria-label="Not included">–</span></li>
+            <li><span class="k">Wall screens</span><span class="v">2×S, 2×L</span></li>
+            <li><span class="k">Automations included</span><span class="v">10</span></li>
+            <li><span class="k">Automation capacity</span><span class="v">Up to 20</span></li>
+            <li><span class="k">Presence sensing</span><span class="v">Optional extra</span></li>
+            <li><span class="k">Garage door</span><span class="v yes" role="img" aria-label="Included"><svg class="tk"
+                  viewBox="0 0 16 16" aria-hidden="true">
+                  <circle cx="8" cy="8" r="7" fill="none" stroke="#8a6d3b" stroke-width="1.5" />
+                  <path d="M5 8.2l2 2 4-4.4" stroke="#8a6d3b" stroke-width="1.6" fill="none" stroke-linecap="round" />
+                </svg></span></li>
+            <li><span class="k">Air conditioning</span><span class="v yes" role="img" aria-label="Included"><svg
+                  class="tk" viewBox="0 0 16 16" aria-hidden="true">
+                  <circle cx="8" cy="8" r="7" fill="none" stroke="#8a6d3b" stroke-width="1.5" />
+                  <path d="M5 8.2l2 2 4-4.4" stroke="#8a6d3b" stroke-width="1.6" fill="none" stroke-linecap="round" />
+                </svg></span></li>
+            <li><span class="k">Processing</span><span class="v">Responsive</span></li>
+            <li><span class="k">Remote access</span><span class="v">Nabu Casa (subscription)</span></li>
+            <li><span class="k">Support</span><span class="v">2 months</span></li>
+          </ul>
+          <div class="price"><span class="amt">$12,000</span><span class="note">indicative, inc GST</span></div>
+        </div>
+      </div>
+
+      <div class="tier" data-tier="platinum">
+        <div class="tier-band band-platinum">
+        </div>
+        <div class="tier-body">
+          <h2><svg class="tic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+              aria-hidden="true">
+              <path d="M12 3.6l6.6 5.4-6.6 11.4L5.4 9z" stroke-linejoin="round" />
+              <path d="M5.4 9h13.2" />
+            </svg>Platinum</h2>
+          <p class="tag">Full control, faster hardware, more sensors.</p>
+          <ul class="specs">
+            <li><span class="k">Lighting</span><span class="v">Clipsal premium-range push buttons</span></li>
+            <li><span class="k">Dimming</span><span class="v yes" role="img" aria-label="Included"><svg class="tk"
+                  viewBox="0 0 16 16" aria-hidden="true">
+                  <circle cx="8" cy="8" r="7" fill="none" stroke="#8a6d3b" stroke-width="1.5" />
+                  <path d="M5 8.2l2 2 4-4.4" stroke="#8a6d3b" stroke-width="1.6" fill="none" stroke-linecap="round" />
+                </svg></span></li>
+            <li><span class="k">Wall screens</span><span class="v">2×S, 1×L High Performance, 1×XL High
+                Performance</span></li>
+            <li><span class="k">Automations included</span><span class="v">50</span></li>
+            <li><span class="k">Automation capacity</span><span class="v">Unlimited</span></li>
+            <li><span class="k">Presence sensing</span><span class="v">Optional extra</span></li>
+            <li><span class="k">Garage door</span><span class="v yes" role="img" aria-label="Included"><svg class="tk"
+                  viewBox="0 0 16 16" aria-hidden="true">
+                  <circle cx="8" cy="8" r="7" fill="none" stroke="#8a6d3b" stroke-width="1.5" />
+                  <path d="M5 8.2l2 2 4-4.4" stroke="#8a6d3b" stroke-width="1.6" fill="none" stroke-linecap="round" />
+                </svg></span></li>
+            <li><span class="k">Air conditioning</span><span class="v yes" role="img" aria-label="Included"><svg
+                  class="tk" viewBox="0 0 16 16" aria-hidden="true">
+                  <circle cx="8" cy="8" r="7" fill="none" stroke="#8a6d3b" stroke-width="1.5" />
+                  <path d="M5 8.2l2 2 4-4.4" stroke="#8a6d3b" stroke-width="1.6" fill="none" stroke-linecap="round" />
+                </svg></span></li>
+            <li><span class="k">Processing</span><span class="v">Fast</span></li>
+            <li><span class="k">Remote access</span><span class="v">Nabu Casa (subscription)</span></li>
+            <li><span class="k">Support</span><span class="v">2 months, priority support, callout fee exempt</span></li>
+          </ul>
+          <div class="price"><span class="amt">$18,000</span><span class="note">indicative, inc GST</span></div>
+        </div>
+      </div>
+
+    </div>
+    <p class="tier-foot">Final quantities are confirmed at a home visit before ordering. Blinds are supplied separately
+      and are not included here. Silver and Gold run on a Home Assistant Green unit; Platinum runs on a mini PC with
+      more processing power and storage.</p>
+
+    <section class="finish-panel" aria-labelledby="finish-title">
+      <h3 id="finish-title">Premium switch choices for the Platinum package</h3>
+      <p class="lede">Choose from four Clipsal premium ranges. Other ranges can be requested for the Platinum package.
+      </p>
+      <div class="range-tabs" role="tablist" aria-label="Choose a premium switch range">
+        <button class="range-tab" id="tab-styl" type="button" role="tab" aria-selected="true"
+          aria-controls="range-panel" tabindex="0" data-finish-index="0" data-range="styl">Iconic Styl</button>
+        <button class="range-tab" id="tab-essence" type="button" role="tab" aria-selected="false"
+          aria-controls="range-panel" tabindex="-1" data-finish-index="1" data-range="essence">Iconic Essence</button>
+        <button class="range-tab" id="tab-saturn" type="button" role="tab" aria-selected="false"
+          aria-controls="range-panel" tabindex="-1" data-finish-index="2" data-range="saturn-zen">Saturn Zen</button>
+        <button class="range-tab" id="tab-solis" type="button" role="tab" aria-selected="false"
+          aria-controls="range-panel" tabindex="-1" data-finish-index="3" data-range="solis">Solis</button>
+      </div>
+      <div class="finish-carousel" role="tabpanel" id="range-panel" aria-labelledby="tab-styl"
+        aria-roledescription="carousel">
+        <button class="carousel-arrow prev" type="button" aria-label="Previous Iconic Styl colour">&#8249;</button>
+        <figure class="finish-slide" aria-live="polite" aria-atomic="true">
+          <div class="finish-shot"><img id="finishImage" src="images/clipsal/processed/styl/S3042C-CE.jpg"
+              alt="Iconic Styl two-gang switch in Classic Electric White"></div>
+          <figcaption><span id="finishName">Classic Electric White</span><span class="finish-count" id="finishCount">1 /
+              3</span></figcaption>
+        </figure>
+        <button class="carousel-arrow next" type="button" aria-label="Next Iconic Styl colour">&#8250;</button>
+      </div>
+      <p class="swipe-hint">Use the arrows or swipe to browse available colours.</p>
+      <p class="finish-note">Each range is shown in the available two-gang colours provided for this proposal.</p>
+    </section>
+
+    <section class="demo" aria-labelledby="demo-title">
+      <div class="demo-head">
+        <div class="eyebrow">Try it</div>
+        <h3 id="demo-title">How the light feels</h3>
+      </div>
+      <div class="demo-grid">
+        <article class="demo-card group">
+          <h4>On/off lights<span class="mini">Silver and Gold</span></h4>
+          <div class="pair">
+            <div class="pair-item">
+              <div class="lamp-demo instant" id="instantLight" role="img" aria-label="On/off light, currently off"><svg
+                  class="bulb" viewBox="0 0 64 88" aria-hidden="true">
+                  <path
+                    d="M32 5C19.7 5 10 14.7 10 27c0 7.2 3 12.4 7.6 18.1 3.6 4 5.5 7.8 5.8 12.2h17.2c.3-4.4 2.2-8.2 5.8-12.2C53 39.4 56 34.2 56 27 56 14.7 46.3 5 32 5Z"
+                    fill="#ffe2a0" stroke="#e8b45a" stroke-width="2.5" />
+                  <path d="M25 58h14v5H25zm1 6h12v5H26zm2 6h8v5h-8zm2 6h4v3h-4z" fill="#b8aa87" stroke="#e8b45a"
+                    stroke-width="1.2" />
+                  <path d="M23 24c1.4-5.4 5.1-8.3 9.6-8.7" fill="none" stroke="#fff4d5" stroke-width="2.3"
+                    stroke-linecap="round" />
+                </svg></div>
+              <button type="button" id="instantToggle" aria-pressed="false">Turn on</button>
+              <output id="instantState" aria-live="polite">Off</output>
+            </div>
+          </div>
+          <p class="desc">Straight to full brightness, and the same back off.</p>
+        </article>
+        <article class="demo-card group">
+          <h4>Dimmable lights<span class="mini">Platinum</span></h4>
+          <div class="pair">
+            <div class="pair-item">
+              <div class="lamp-demo" id="fadeLight" role="img" aria-label="Dimmable light, currently off"><svg
+                  class="bulb" viewBox="0 0 64 88" aria-hidden="true">
+                  <path
+                    d="M32 5C19.7 5 10 14.7 10 27c0 7.2 3 12.4 7.6 18.1 3.6 4 5.5 7.8 5.8 12.2h17.2c.3-4.4 2.2-8.2 5.8-12.2C53 39.4 56 34.2 56 27 56 14.7 46.3 5 32 5Z"
+                    fill="#ffe2a0" stroke="#e8b45a" stroke-width="2.5" />
+                  <path d="M25 58h14v5H25zm1 6h12v5H26zm2 6h8v5h-8zm2 6h4v3h-4z" fill="#b8aa87" stroke="#e8b45a"
+                    stroke-width="1.2" />
+                  <path d="M23 24c1.4-5.4 5.1-8.3 9.6-8.7" fill="none" stroke="#fff4d5" stroke-width="2.3"
+                    stroke-linecap="round" />
+                </svg></div>
+              <button type="button" id="fadeToggle" aria-pressed="false">Turn on</button>
+              <output id="fadeState" aria-live="polite">Off</output>
+            </div>
+          </div>
+          <p class="desc">Comes up gently and settles, the way a room lights up at dusk.</p>
+        </article>
+      </div>
+      <p class="demo-hint">Fade speed is set during commissioning.</p>
+    </section>
+
+    <!-- ================= SYSTEM DIAGRAM ================= -->
+    <div class="sec">
+      <div class="sec-head">
+        <div class="k">How it fits together</div>
+        <h3>One system, three ways in</h3>
+      </div>
+      <div class="diagram">
+        <div class="flow">
+          <div class="flow-col">
+            <div class="flow-label">You use</div>
+            <div class="flow-node"><svg class="fic" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                stroke-width="1.5" aria-hidden="true">
+                <rect x="3" y="3" width="14" height="14" rx="3" />
+                <path d="M10 6.5v7" />
+              </svg>Wall switches</div>
+            <div class="flow-node"><svg class="fic" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                stroke-width="1.5" aria-hidden="true">
+                <rect x="5.5" y="2.5" width="9" height="15" rx="2.5" />
+                <path d="M9 15h2" />
+              </svg>Phone app</div>
+          </div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
+          <div class="flow-col flow-core">
+            <div class="flow-label">Runs in your home</div>
+            <div class="flow-node core"><svg class="fic" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                stroke-width="1.5" aria-hidden="true">
+                <circle cx="10" cy="10" r="7" />
+                <circle cx="10" cy="10" r="2.5" />
+              </svg>Home Assistant hub</div>
+            <p>Your routines run here. Lights and switches keep working when the internet goes down.</p>
+          </div>
+          <div class="flow-arrow" aria-hidden="true">→</div>
+          <div class="flow-col">
+            <div class="flow-label">It controls</div>
+            <div class="flow-node"><svg class="fic" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                stroke-width="1.5" aria-hidden="true">
+                <circle cx="10" cy="8.5" r="4.5" />
+                <path d="M10 13.5v3" />
+              </svg>Lights, dimmed on Platinum</div>
+            <div class="flow-node"><svg class="fic" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                stroke-width="1.5" aria-hidden="true">
+                <rect x="3" y="4" width="14" height="10" rx="2" />
+                <path d="M7 17h6" />
+              </svg>Wall screens on all tiers</div>
+            <div class="flow-node"><svg class="fic" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                stroke-width="1.5" aria-hidden="true">
+                <path d="M4 16V9l6-5 6 5v7" />
+                <path d="M8 16v-4h4v4" />
+              </svg>Garage door and air conditioning on all tiers</div>
+          </div>
+        </div>
+        <p class="diagram-cloud">Remote access is available through a paid Nabu Casa Home Assistant Cloud subscription.
+        </p>
+      </div>
+    </div>
+
+      <!-- ================= NETWORK PROPOSAL ================= -->
+      <div class="sec network-proposal">
+        <div class="sec-head">
+          <div class="k">Connectivity</div>
+          <h3>Home network options</h3>
+        </div>
+        <p class="network-intro">
+          We recommend a purpose-built UniFi system adapted for your home. Each tier includes Wi‑Fi 7 access points
+          and a dedicated smart-home network. Coverage is designed around your home and confirmed during the site survey.
+        </p>
+
+        <div class="tiers">
+          <div class="tier" data-tier="silver">
+            <div class="tier-band band-silver">
+            </div>
+            <div class="tier-body">
+              <h2><svg class="tic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8.2" />
+                  <circle cx="12" cy="12" r="3.2" stroke-dasharray="2.6 2.2" />
+                </svg>Silver Network</h2>
+              <p class="tag tier-tag">Designed for reliable whole-home coverage, with one access point per floor.</p>
+              <ul class="specs">
+                <li><span class="k">Kit</span><span class="v">Dream Router · 2× U7 Pro APs · PoE+ switch</span></li>
+                <li><span class="k">APs</span><span class="v">2 — one per floor</span></li>
+                <li><span class="k">Gateway LAN</span><span class="v">1 GbE</span></li>
+                <li><span class="k">Wi‑Fi</span><span class="v">Wi‑Fi 7 (802.11be) · 6‑stream tri‑band</span></li>
+                <li><span class="k">IDS/IPS throughput</span><span class="v">1 Gbps</span></li>
+                <li><span class="k">Security</span><span class="v yes">Built‑in IDS/IPS</span></li>
+                <li><span class="k">Cameras</span><span class="v none" role="img" aria-label="Not included">–</span></li>
+                <li><span class="k">IoT network</span><span class="v yes">Dedicated VLAN for smart devices</span></li>
+                <li><span class="k">Network management</span><span class="v">UniFi app</span></li>
+              </ul>
+              <div class="price"><span class="amt">$1,466</span><span class="note">indicative hardware, inc GST</span></div>
+            </div>
+          </div>
+
+          <div class="tier featured" data-tier="gold">
+            <div class="tier-band band-gold">
+              <span class="recommended-badge">Recommended</span>
+            </div>
+            <div class="tier-body">
+              <h2><svg class="tic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                  <path d="M12 3.4l2.1 5.1 5.5.4-4.2 3.5 1.3 5.4L12 14.9l-4.7 2.9 1.3-5.4L4.4 8.9l5.5-.4z" stroke-linejoin="round" />
+                </svg>Gold Network</h2>
+              <p class="tag tier-tag">Dense Wi‑Fi 7, with more access points for denser coverage throughout the home.</p>
+              <ul class="specs">
+                <li><span class="k">Kit</span><span class="v">Cloud Gateway Ultra · 4× U7 Pro APs · 2.5 GbE PoE+ switch</span></li>
+                <li><span class="k">APs</span><span class="v">4 — two per floor</span></li>
+                <li><span class="k">Gateway LAN</span><span class="v">1 GbE</span></li>
+                <li><span class="k">Wi‑Fi</span><span class="v">Wi‑Fi 7 (802.11be) · 6‑stream tri‑band</span></li>
+                <li><span class="k">IDS/IPS throughput</span><span class="v">1 Gbps</span></li>
+                <li><span class="k">Security</span><span class="v yes">Built‑in IDS/IPS</span></li>
+                <li><span class="k">Cameras</span><span class="v none" role="img" aria-label="Not included">–</span></li>
+                <li><span class="k">IoT network</span><span class="v yes">Dedicated VLAN for smart devices</span></li>
+                <li><span class="k">Network management</span><span class="v">UniFi app</span></li>
+              </ul>
+              <div class="price"><span class="amt">$2,068</span><span class="note">indicative hardware, inc GST</span></div>
+            </div>
+          </div>
+
+          <div class="tier" data-tier="platinum">
+            <div class="tier-band band-platinum">
+            </div>
+            <div class="tier-body">
+              <h2><svg class="tic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                  <path d="M12 3.6l6.6 5.4-6.6 11.4L5.4 9z" stroke-linejoin="round" />
+                  <path d="M5.4 9h13.2" />
+                </svg>Platinum Network</h2>
+              <p class="tag tier-tag">Local recording, with no ongoing UniFi subscription fee.</p>
+              <ul class="specs">
+                <li><span class="k">Kit</span><span class="v">Cloud Gateway Max · 4× U7 Pro APs · 3× cameras · 2.5 GbE PoE+ switch</span></li>
+                <li><span class="k">APs</span><span class="v">4 — two per floor</span></li>
+                <li><span class="k">Gateway LAN</span><span class="v">2.5 GbE</span></li>
+                <li><span class="k">IDS/IPS throughput</span><span class="v">2.3 Gbps</span></li>
+                <li><span class="k">Wi‑Fi</span><span class="v">Wi‑Fi 7 (802.11be) · 6‑stream tri‑band</span></li>
+                <li><span class="k">Security</span><span class="v yes">Built‑in IDS/IPS</span></li>
+                <li><span class="k">Cameras</span><span class="v">3× G6 + up to 2TB local recording</span></li>
+                <li><span class="k">IoT network</span><span class="v yes">Dedicated VLAN for smart devices</span></li>
+                <li><span class="k">Network management</span><span class="v">UniFi app</span></li>
+              </ul>
+              <div class="price"><span class="amt">$5,383</span><span class="note">indicative hardware, inc GST</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="tier-foot">Network pricing is for hardware only, quoted separately from the lighting proposal. Each
+          network tier pairs naturally with its matching lighting tier. Designs were simulated in the
+          <a href="https://design.ui.com" style="color:var(--accent);text-decoration:none">UniFi Design Center</a>.
+          Cabling and installation quoted at the home visit.</p>
+      </div>
+
+      <!-- ================= COMPARE ================= -->
+    <div class="sec">
+      <div class="sec-head">
+        <div class="k">Side by side</div>
+        <h3>What each tier includes</h3>
+      </div>
+      <div class="table-wrap">
+        <table class="compare">
+          <caption class="sr">Comparison of the three tiers</caption>
+          <thead>
+            <tr>
+              <th scope="col">Capability</th>
+              <th scope="col">Silver</th>
+              <th scope="col">Gold</th>
+              <th scope="col">Platinum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lighting</td>
+              <td data-label="Silver">Basic smart switch replacement</td>
+              <td data-label="Gold">Existing switches converted to push-button</td>
+              <td data-label="Platinum">Clipsal premium-range push buttons</td>
+            </tr>
+            <tr class="hl">
+              <td>Dimming</td>
+              <td data-label="Silver"><span class="status-mark excluded" role="img" aria-label="Not included">–</span>
+              </td>
+              <td data-label="Gold"><span class="status-mark excluded" role="img" aria-label="Not included">–</span>
+              </td>
+              <td data-label="Platinum"><span class="status-mark included" role="img" aria-label="Included">✓</span>
+              </td>
+            </tr>
+            <tr class="hl">
+              <td>Wall screens</td>
+              <td data-label="Silver">2×S (small), 1×M (medium), 1×L (large)</td>
+              <td data-label="Gold">2×S, 2×L</td>
+              <td data-label="Platinum">2×S, 1×L High Performance (Android), 1×XL High Performance (Android)</td>
+            </tr>
+            <tr class="hl">
+              <td>Automations included</td>
+              <td data-label="Silver">5</td>
+              <td data-label="Gold">10</td>
+              <td data-label="Platinum">50</td>
+            </tr>
+            <tr>
+              <td>Automation capacity</td>
+              <td data-label="Silver">Up to 20</td>
+              <td data-label="Gold">Up to 20</td>
+              <td data-label="Platinum">Unlimited</td>
+            </tr>
+            <tr>
+              <td>Presence sensing</td>
+              <td data-label="Silver"><span class="status-mark excluded" role="img" aria-label="Not included">–</span>
+              </td>
+              <td data-label="Gold">Optional extra</td>
+              <td data-label="Platinum">Optional extra</td>
+            </tr>
+            <tr>
+              <td>Garage door</td>
+              <td data-label="Silver"><span class="status-mark included" role="img" aria-label="Included">✓</span></td>
+              <td data-label="Gold"><span class="status-mark included" role="img" aria-label="Included">✓</span></td>
+              <td data-label="Platinum"><span class="status-mark included" role="img" aria-label="Included">✓</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Air conditioning</td>
+              <td data-label="Silver"><span class="status-mark included" role="img" aria-label="Included">✓</span></td>
+              <td data-label="Gold"><span class="status-mark included" role="img" aria-label="Included">✓</span></td>
+              <td data-label="Platinum"><span class="status-mark included" role="img" aria-label="Included">✓</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Processing</td>
+              <td data-label="Silver">Home Assistant Green</td>
+              <td data-label="Gold">Home Assistant Green</td>
+              <td data-label="Platinum">Mini PC, more processing power</td>
+            </tr>
+            <tr class="hl">
+              <td>Home network</td>
+              <td data-label="Silver">Matching network tier available — quoted separately<br><span style="font-weight:400;color:var(--muted);font-size:12px">Silver Network — $1,466 indicative hardware, inc GST</span></td>
+              <td data-label="Gold">Matching network tier available — quoted separately<br><span style="font-weight:400;color:var(--muted);font-size:12px">Gold Network — $2,068 indicative hardware, inc GST</span></td>
+              <td data-label="Platinum">Matching network tier available — quoted separately<br><span style="font-weight:400;color:var(--muted);font-size:12px">Platinum Network — $5,383 indicative hardware, inc GST</span></td>
+            </tr>
+            <tr>
+              <td>Remote access</td>
+              <td data-label="Silver">Home Assistant App via Nabu Casa (subscription)</td>
+              <td data-label="Gold">Silver inclusions + integration into Google Home/Apple HomeKit</td>
+              <td data-label="Platinum">Silver inclusions + integration into Google Home/Apple HomeKit</td>
+            </tr>
+            <tr>
+              <td>Support after handover</td>
+              <td data-label="Silver">2 months</td>
+              <td data-label="Gold">2 months</td>
+              <td data-label="Platinum">2 months, priority support, callout fee exempt</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ================= FOUNDATION ================= -->
+    <div class="sec">
+      <div class="foundation">
+        <h3>The foundation every tier shares</h3>
+        <p class="lede">Whichever tier you choose, the system underneath is built to the same standard.</p>
+        <div class="found-grid">
+          <div class="item">
+            <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8b45a"
+                stroke-width="1.6" stroke-linecap="round">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 3v18M3 12h18" opacity=".5" />
+                <circle cx="12" cy="12" r="3.5" fill="#e8b45a" stroke="none" />
+              </svg></div>
+            <div class="t">Local-first control with optional remote access</div>
+            <div class="d">Switches, routines and automations run locally, so they keep working if the internet drops.
+              Remote access is available through a paid Nabu Casa Home Assistant Cloud subscription.</div>
+          </div>
+          <div class="item">
+            <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8b45a"
+                stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z" />
+                <path d="M9 12l2 2 4-4.5" />
+              </svg></div>
+            <div class="t">Australian compliant</div>
+            <div class="d">All electrical work by licensed electricians, all products approved for use in Australia.
+            </div>
+          </div>
+          <div class="item">
+            <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8b45a"
+                stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 11l8-7 8 7" />
+                <path d="M6 10v9h12v-9" />
+                <path d="M10 19v-5h4v5" />
+              </svg></div>
+            <div class="t">Works with the walls you have</div>
+            <div class="d">Fitted neatly into the home you already have. Minimal cutting into walls, no mess left
+              behind.</div>
+          </div>
+          <div class="item">
+            <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8b45a"
+                stroke-width="1.6" stroke-linecap="round">
+                <rect x="4" y="4" width="16" height="16" rx="4" />
+                <path d="M9 9h6M9 13h6M9 17h3" />
+              </svg></div>
+            <div class="t">One system, one app</div>
+            <div class="d">Lights, garage and air conditioning all in one simple app.</div>
+          </div>
+          <div class="item">
+            <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8b45a"
+                stroke-width="1.6" stroke-linecap="round">
+                <rect x="6" y="4" width="12" height="16" rx="3" />
+                <circle cx="12" cy="16" r="1.4" fill="#e8b45a" stroke="none" />
+                <path d="M12 8v4" opacity=".6" />
+              </svg></div>
+            <div class="t">Privacy by design</div>
+            <div class="d">Everything runs on a device inside your home. Your home's data stays in your home.</div>
+          </div>
+          <div class="item">
+            <div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8b45a"
+                stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 13a8 8 0 0 1 16 0" />
+                <path d="M4 13v4a2 2 0 0 0 2 2h1v-6H6a2 2 0 0 0-2 2zM20 13v4a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 2z" />
+              </svg></div>
+            <div class="t">Handover &amp; support</div>
+            <div class="d">A full walkthrough when we finish, plus two months of free adjustments.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= PROCESS ================= -->
+    <div class="sec">
+      <div class="sec-head">
+        <div class="k">Delivery</div>
+        <h3>How we deliver</h3>
+      </div>
+      <div class="process">
+        <div class="step">
+          <div class="n">1</div>
+          <div class="t">Survey</div>
+          <div class="d">We visit and map every switch and light in the home, so the quote covers the exact quantities.
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">2</div>
+          <div class="t">Consultation</div>
+          <div class="d">We discuss the detailed plan together, then you choose your package and any add-ons.</div>
+        </div>
+        <div class="step">
+          <div class="n">3</div>
+          <div class="t">Install &amp; commission</div>
+          <div class="d">A licensed electrician does all the electrical work. We set up your scenes and routines around
+            how you live.</div>
+        </div>
+        <div class="step">
+          <div class="n">4</div>
+          <div class="t">Handover</div>
+          <div class="d">We walk you through everything, hand over the guides, and stay available for two months of free
+            tweaks.</div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      Prices include GST and are confirmed in writing after the home visit, before anything is ordered.
+      Dimming is tested in your home during the sample stage. Any light that doesn't dim smoothly stays a simple on/off
+      at no extra cost. Network is quoted separately alongside your lighting tier.
+    </footer>
+
+  </div>
+  <script>
+    (function () {
+      var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function equalizeTierRows() {
+        var groups = document.querySelectorAll('.page > .tiers, .network-proposal > .tiers');
+        groups.forEach(function (group) {
+          var cards = Array.from(group.querySelectorAll(':scope > .tier'));
+          cards.forEach(function (card) {
+            card.querySelectorAll('h2, .tag, .specs li, .price').forEach(function (row) {
+              row.style.minHeight = '';
+            });
+          });
+
+          function equalize(rows) {
+            var present = rows.filter(Boolean);
+            if (present.length < 2) return;
+            var height = Math.ceil(Math.max.apply(null, present.map(function (row) {
+              return row.getBoundingClientRect().height;
+            })));
+            present.forEach(function (row) { row.style.minHeight = height + 'px'; });
+          }
+
+          equalize(cards.map(function (card) { return card.querySelector('h2'); }));
+          equalize(cards.map(function (card) { return card.querySelector('.tag'); }));
+          equalize(cards.map(function (card) { return card.querySelector('.price'); }));
+          equalize(cards.map(function (card) { return card.querySelector('.tier-band'); }));
+
+          var labels = new Set();
+          cards.forEach(function (card) {
+            card.querySelectorAll('.specs li .k').forEach(function (label) {
+              labels.add(label.textContent.trim());
+            });
+          });
+          labels.forEach(function (labelText) {
+            equalize(cards.map(function (card) {
+              var rows = Array.from(card.querySelectorAll('.specs li'));
+              var match = rows.find(function (row) {
+                var label = row.querySelector('.k');
+                return label && label.textContent.trim() === labelText;
+              });
+              return match || null;
+            }));
+          });
+        });
+      }
+
+      var tierEqualizeFrame = null;
+      function scheduleTierRowEqualize() {
+        if (tierEqualizeFrame !== null) window.cancelAnimationFrame(tierEqualizeFrame);
+        tierEqualizeFrame = window.requestAnimationFrame(function () {
+          tierEqualizeFrame = null;
+          equalizeTierRows();
+        });
+      }
+      scheduleTierRowEqualize();
+      window.addEventListener('resize', scheduleTierRowEqualize);
+      window.addEventListener('load', scheduleTierRowEqualize);
+
+      function wireToggle(lightId, btnId, stateId, label, fadeMs) {
+        var light = document.getElementById(lightId);
+        var btn = document.getElementById(btnId);
+        var state = document.getElementById(stateId);
+        if (!light || !btn) { return; }
+        var on = false;
+        var timer = null;
+
+        var paint = function (settled) {
+          light.classList.toggle('is-on', on);
+          light.setAttribute('aria-label', label + ', currently ' + (on ? 'on' : 'off'));
+          btn.textContent = on ? 'Turn off' : 'Turn on';
+          btn.setAttribute('aria-pressed', String(on));
+          if (state) {
+            if (fadeMs > 0 && !settled) {
+              state.textContent = on ? 'Fading in' : 'Fading out';
+            } else {
+              state.textContent = on ? 'On' : 'Off';
+            }
+          }
+        };
+
+        btn.addEventListener('click', function () {
+          on = !on;
+          paint(false);
+          window.clearTimeout(timer);
+          if (fadeMs > 0) { timer = window.setTimeout(function () { paint(true); }, fadeMs); }
+        });
+
+        paint(true);
+      }
+
+      var finishRanges = [
+        {
+          name: 'Iconic Styl', id: 'tab-styl', colours: [
+            { name: 'Classic Electric White', image: 'images/clipsal/processed/styl/S3042C-CE.jpg' },
+            { name: 'Silver Shadow', image: 'images/clipsal/processed/styl/S3042C-SH.jpg' },
+            { name: 'Stainless Silver', image: 'images/clipsal/processed/styl/S3042C-SV.jpg' }
+          ]
+        },
+        {
+          name: 'Iconic Essence', id: 'tab-essence', colours: [
+            { name: 'Antique Gold', image: 'images/clipsal/processed/essence/E3042C-AG.jpg' },
+            { name: 'Antique White', image: 'images/clipsal/processed/essence/E3042C-AW.jpg' }
+          ]
+        },
+        {
+          name: 'Saturn Zen', id: 'tab-saturn', colours: [
+            { name: 'Black', image: 'images/clipsal/processed/saturn-zen/Z4062PBL-ZB.jpg' },
+            { name: 'White', image: 'images/clipsal/processed/saturn-zen/Z4062PBL-ZW.jpg' }
+          ]
+        },
+        {
+          name: 'Solis', id: 'tab-solis', colours: [
+            { name: 'Black', image: 'images/clipsal/processed/solis/1042PA-ZB.jpg' },
+            { name: 'White', image: 'images/clipsal/processed/solis/1042PA-ZW.jpg' }
+          ]
+        }
+      ];
+      var finishRangeIndex = 0;
+      var finishColourIndex = 0;
+      var finishTabs = Array.from(document.querySelectorAll('.range-tab'));
+      var finishImage = document.getElementById('finishImage');
+      var finishName = document.getElementById('finishName');
+      var finishCount = document.getElementById('finishCount');
+      var finishPanel = document.getElementById('range-panel');
+      var finishSlide = document.querySelector('.finish-slide');
+      var finishStartPoint = null;
+      var prevFinish = document.querySelector('.carousel-arrow.prev');
+      var nextFinish = document.querySelector('.carousel-arrow.next');
+
+      function showFinish() {
+        var range = finishRanges[finishRangeIndex];
+        var colour = range.colours[finishColourIndex];
+        finishImage.src = colour.image;
+        finishImage.alt = 'Clipsal ' + range.name + ' two-gang switch in ' + colour.name;
+        finishName.textContent = colour.name;
+        finishCount.textContent = (finishColourIndex + 1) + ' / ' + range.colours.length;
+        finishPanel.setAttribute('aria-labelledby', range.id);
+        prevFinish.setAttribute('aria-label', 'Previous ' + range.name + ' colour');
+        nextFinish.setAttribute('aria-label', 'Next ' + range.name + ' colour');
+      }
+
+      function selectRange(index, focusTab) {
+        finishRangeIndex = (index + finishRanges.length) % finishRanges.length;
+        finishColourIndex = 0;
+        finishTabs.forEach(function (tab, tabIndex) {
+          var selected = tabIndex === finishRangeIndex;
+          tab.setAttribute('aria-selected', selected ? 'true' : 'false');
+          tab.tabIndex = selected ? 0 : -1;
+        });
+        if (focusTab) finishTabs[finishRangeIndex].focus();
+        showFinish();
+      }
+
+      function advanceColour(delta) {
+        var count = finishRanges[finishRangeIndex].colours.length;
+        finishColourIndex = (finishColourIndex + delta + count) % count;
+        showFinish();
+      }
+
+      finishTabs.forEach(function (tab, index) {
+        tab.addEventListener('click', function () { selectRange(index, false); });
+        tab.addEventListener('keydown', function (event) {
+          if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+            event.preventDefault(); selectRange(finishRangeIndex + 1, true);
+          } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+            event.preventDefault(); selectRange(finishRangeIndex - 1, true);
+          } else if (event.key === 'Home') {
+            event.preventDefault(); selectRange(0, true);
+          } else if (event.key === 'End') {
+            event.preventDefault(); selectRange(finishRanges.length - 1, true);
+          }
+        });
+      });
+      prevFinish.addEventListener('click', function () { advanceColour(-1); });
+      nextFinish.addEventListener('click', function () { advanceColour(1); });
+      finishSlide.addEventListener('touchstart', function (event) {
+        var touch = event.changedTouches[0];
+        finishStartPoint = { x: touch.clientX, y: touch.clientY };
+      }, { passive: true });
+      finishSlide.addEventListener('touchend', function (event) {
+        if (finishStartPoint === null) return;
+        var touch = event.changedTouches[0];
+        var dx = touch.clientX - finishStartPoint.x;
+        var dy = touch.clientY - finishStartPoint.y;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) advanceColour(dx < 0 ? 1 : -1);
+        finishStartPoint = null;
+      }, { passive: true });
+      finishSlide.addEventListener('touchcancel', function () { finishStartPoint = null; }, { passive: true });
+      showFinish();
+
+      wireToggle('instantLight', 'instantToggle', 'instantState', 'On/off light', 0);
+      wireToggle('fadeLight', 'fadeToggle', 'fadeState', 'Dimmable light', reduced ? 0 : 850);
+    })();
+  </script>
+</body>
+
+</html>
