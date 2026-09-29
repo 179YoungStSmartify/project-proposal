@@ -909,6 +909,19 @@
       background: #faf6ec
     }
 
+    .compare a.network-link {
+      color: var(--accent);
+      font-size: 12px;
+      text-decoration: underline;
+      text-underline-offset: 2px
+    }
+
+    .compare a.network-link:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+      border-radius: 2px
+    }
+
     .status-mark {
       display: inline-block;
       min-width: 1em;
@@ -1412,7 +1425,6 @@
                   <circle cx="8" cy="8" r="7" fill="none" stroke="#8a6d3b" stroke-width="1.5" />
                   <path d="M5 8.2l2 2 4-4.4" stroke="#8a6d3b" stroke-width="1.6" fill="none" stroke-linecap="round" />
                 </svg></span></li>
-            <li><span class="k">Processing</span><span class="v">Responsive</span></li>
             <li><span class="k">Remote access</span><span class="v">Nabu Casa (subscription)</span></li>
             <li><span class="k">Support</span><span class="v">2 months</span></li>
           </ul>
@@ -1448,7 +1460,6 @@
                   <circle cx="8" cy="8" r="7" fill="none" stroke="#8a6d3b" stroke-width="1.5" />
                   <path d="M5 8.2l2 2 4-4.4" stroke="#8a6d3b" stroke-width="1.6" fill="none" stroke-linecap="round" />
                 </svg></span></li>
-            <li><span class="k">Processing</span><span class="v">Responsive</span></li>
             <li><span class="k">Remote access</span><span class="v">Nabu Casa (subscription)</span></li>
             <li><span class="k">Support</span><span class="v">2 months</span></li>
           </ul>
@@ -1488,7 +1499,6 @@
                   <circle cx="8" cy="8" r="7" fill="none" stroke="#8a6d3b" stroke-width="1.5" />
                   <path d="M5 8.2l2 2 4-4.4" stroke="#8a6d3b" stroke-width="1.6" fill="none" stroke-linecap="round" />
                 </svg></span></li>
-            <li><span class="k">Processing</span><span class="v">Fast</span></li>
             <li><span class="k">Remote access</span><span class="v">Nabu Casa (subscription)</span></li>
             <li><span class="k">Support</span><span class="v">2 months, priority support, callout fee exempt</span></li>
           </ul>
@@ -1648,7 +1658,7 @@
         </p>
 
         <div class="tiers">
-          <div class="tier" data-tier="silver">
+          <div class="tier" data-tier="silver" id="network-silver">
             <div class="tier-band band-silver">
             </div>
             <div class="tier-body">
@@ -1672,7 +1682,7 @@
             </div>
           </div>
 
-          <div class="tier featured" data-tier="gold">
+          <div class="tier featured" data-tier="gold" id="network-gold">
             <div class="tier-band band-gold">
               <span class="recommended-badge">Recommended</span>
             </div>
@@ -1696,7 +1706,7 @@
             </div>
           </div>
 
-          <div class="tier" data-tier="platinum">
+          <div class="tier" data-tier="platinum" id="network-platinum">
             <div class="tier-band band-platinum">
             </div>
             <div class="tier-body">
@@ -1709,8 +1719,8 @@
                 <li><span class="k">Kit</span><span class="v">Cloud Gateway Max · 4× U7 Pro APs · 3× cameras · 2.5 GbE PoE+ switch</span></li>
                 <li><span class="k">APs</span><span class="v">4 — two per floor</span></li>
                 <li><span class="k">Gateway LAN</span><span class="v">2.5 GbE</span></li>
-                <li><span class="k">IDS/IPS throughput</span><span class="v">2.3 Gbps</span></li>
                 <li><span class="k">Wi‑Fi</span><span class="v">Wi‑Fi 7 (802.11be) · 6‑stream tri‑band</span></li>
+                <li><span class="k">IDS/IPS throughput</span><span class="v">2.3 Gbps</span></li>
                 <li><span class="k">Security</span><span class="v yes">Built‑in IDS/IPS</span></li>
                 <li><span class="k">Cameras</span><span class="v">3× G6 + up to 2TB local recording</span></li>
                 <li><span class="k">IoT network</span><span class="v yes">Dedicated VLAN for smart devices</span></li>
@@ -1798,17 +1808,11 @@
               <td data-label="Platinum"><span class="status-mark included" role="img" aria-label="Included">✓</span>
               </td>
             </tr>
-            <tr>
-              <td>Processing</td>
-              <td data-label="Silver">Home Assistant Green</td>
-              <td data-label="Gold">Home Assistant Green</td>
-              <td data-label="Platinum">Mini PC, more processing power</td>
-            </tr>
             <tr class="hl">
               <td>Home network</td>
-              <td data-label="Silver">Matching network tier available — quoted separately<br><span style="font-weight:400;color:var(--muted);font-size:12px">Silver Network — $1,466 indicative hardware, inc GST</span></td>
-              <td data-label="Gold">Matching network tier available — quoted separately<br><span style="font-weight:400;color:var(--muted);font-size:12px">Gold Network — $2,068 indicative hardware, inc GST</span></td>
-              <td data-label="Platinum">Matching network tier available — quoted separately<br><span style="font-weight:400;color:var(--muted);font-size:12px">Platinum Network — $5,383 indicative hardware, inc GST</span></td>
+              <td data-label="Silver"><a class="network-link" href="#network-silver">Silver Network — $1,466 indicative hardware, inc GST</a></td>
+              <td data-label="Gold"><a class="network-link" href="#network-gold">Gold Network — $2,068 indicative hardware, inc GST</a></td>
+              <td data-label="Platinum"><a class="network-link" href="#network-platinum">Platinum Network — $5,383 indicative hardware, inc GST</a></td>
             </tr>
             <tr>
               <td>Remote access</td>

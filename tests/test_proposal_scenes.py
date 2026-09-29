@@ -33,8 +33,10 @@ def extract_div_block(html, start_index):
 
 
 def tier_block(html, tier):
-    idx = html.index('data-tier="%s">' % tier)
-    return extract_div_block(html, html.rindex("<div", 0, idx))
+    match = re.search(r'<div\b[^>]*data-tier="%s"[^>]*>' % re.escape(tier), html)
+    if match is None:
+        raise ValueError("tier not found: " + tier)
+    return extract_div_block(html, match.start())
 
 
 class TagBalance(HTMLParser):
@@ -115,6 +117,12 @@ class ProposalTierVisualsTest(unittest.TestCase):
             r"\.recommended-badge\s*\{[^}]*position:\s*absolute",
         )
 
+    def test_high_level_tiers_do_not_show_processing_as_a_feature_row(self):
+        for tier in ("silver", "gold", "platinum"):
+            card = tier_block(self.html, tier)
+            self.assertNotIn('<span class="k">Processing</span>', card, tier)
+        self.assertNotRegex(self.html, r'<td>Processing</td>')
+
     def test_tier_band_heights_remain_responsive(self):
         self.assertRegex(self.html, r"\.tier-band\s*\{[^}]*height:\s*150px")
         self.assertRegex(self.html, r"\.tier-band\s*\{[^}]*height:\s*128px")
@@ -140,7 +148,7 @@ class ProposalTierVisualsTest(unittest.TestCase):
     def test_network_cards_use_tier_gradients_without_inline_overrides(self):
         network_section = re.search(r'<!-- ================= NETWORK PROPOSAL ================= -->(.*?)<!-- ================= COMPARE ================= -->', self.html, re.DOTALL)
         self.assertIsNotNone(network_section)
-        cards = re.findall(r'<div class="tier(?: featured)?" data-tier="(silver|gold|platinum)">', network_section.group(1))
+        cards = re.findall(r'<div class="tier(?: featured)?" data-tier="(silver|gold|platinum)"[^>]*>', network_section.group(1))
         self.assertEqual(["silver", "gold", "platinum"], cards)
         for tier in cards:
             band = re.search(r'<div class="tier-band band-%s"([^>]*)>' % tier, network_section.group(1))
@@ -168,6 +176,14 @@ class ProposalTierVisualsTest(unittest.TestCase):
             self.assertIn(gateway, card, tier)
             self.assertRegex(card, r'<li><span class="k">Gateway LAN</span><span class="v">%s</span></li>' % re.escape(speed), tier)
             self.assertRegex(card, r'<li><span class="k">IDS/IPS throughput</span><span class="v">%s</span></li>' % re.escape(ips_throughput), tier)
+
+    def test_platinum_network_rows_keep_wifi_before_ids_ips(self):
+        network_section = re.search(r'<!-- ================= NETWORK PROPOSAL ================= -->(.*?)<!-- ================= COMPARE ================= -->', self.html, re.DOTALL)
+        self.assertIsNotNone(network_section)
+        for tier in ("silver", "gold", "platinum"):
+            card = tier_block(network_section.group(1), tier)
+            row_order = re.findall(r'<span class="k">(Wi‑Fi|IDS/IPS throughput)</span>', card)
+            self.assertEqual(["Wi‑Fi", "IDS/IPS throughput"], row_order, tier)
 
     def test_wifi_7_access_points_have_poe_plus_switches(self):
         network_section = re.search(r'<!-- ================= NETWORK PROPOSAL ================= -->(.*?)<!-- ================= COMPARE ================= -->', self.html, re.DOTALL)
@@ -200,9 +216,12 @@ class ProposalTierVisualsTest(unittest.TestCase):
         for tier, price in expected.items():
             cell = re.search(r'<td data-label="%s">(.*?)</td>' % tier, row.group(1), re.DOTALL)
             self.assertIsNotNone(cell, tier)
-            self.assertIn("Matching network tier available — quoted separately", cell.group(1), tier)
-            self.assertIn(tier + " Network", cell.group(1), tier)
-            self.assertIn(price + " indicative hardware, inc GST", cell.group(1), tier)
+            anchor_id = "network-" + tier.lower()
+            self.assertRegex(self.html, r'<div[^>]+id="%s"' % anchor_id)
+            link = re.search(r'<a[^>]+href="#%s"[^>]*>(.*?)</a>' % anchor_id, cell.group(1), re.DOTALL)
+            self.assertIsNotNone(link, tier)
+            self.assertIn(tier + " Network — " + price + " indicative hardware, inc GST", link.group(1), tier)
+            self.assertNotIn("Matching network tier available — quoted separately", cell.group(1), tier)
 
     def test_network_app_and_subscription_copy_are_scoped_correctly(self):
         network_section = re.search(r'<!-- ================= NETWORK PROPOSAL ================= -->(.*?)<!-- ================= COMPARE ================= -->', self.html, re.DOTALL)
