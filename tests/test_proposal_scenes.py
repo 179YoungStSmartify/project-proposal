@@ -204,6 +204,16 @@ class ProposalTierVisualsTest(unittest.TestCase):
         self.assertIn("up to 2TB local recording", platinum)
         self.assertNotIn("2TB recording</span>", platinum)
 
+    def test_back_to_top_button_is_hidden_until_scrolled_down(self):
+        button = re.search(r'<button[^>]*id="backToTop"[^>]*>', self.html)
+        self.assertIsNotNone(button)
+        if button is not None:
+            self.assertRegex(button.group(0), r'\shidden(?:\s|>)')
+        self.assertRegex(self.html, r'\.back-to-top\[hidden\]\s*\{\s*display:\s*none')
+        self.assertIn('window.addEventListener(\'scroll\', updateBackToTop', self.html)
+        self.assertIn('backToTop.hidden = window.scrollY <= 200;', self.html)
+        self.assertIn('updateBackToTop();', self.html)
+
     def test_back_to_top_button_is_fixed_and_scrolls_to_page_top(self):
         self.assertRegex(self.html, r'<button[^>]+id="backToTop"[^>]*aria-label="Back to top"')
         self.assertRegex(self.html, r'\.back-to-top\s*\{[^}]*position:\s*fixed')

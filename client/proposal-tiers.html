@@ -944,6 +944,10 @@
       cursor: pointer
     }
 
+    .back-to-top[hidden] {
+      display: none
+    }
+
     .back-to-top:hover {
       background: #39342c
     }
@@ -1970,7 +1974,7 @@
       Dimming is tested in your home during the sample stage. Any light that doesn't dim smoothly stays a simple on/off
       at no extra cost. Network is quoted separately alongside your lighting tier.
     </footer>
-    <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">
+    <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top" hidden>
       <span aria-hidden="true">↑</span>Back to top
     </button>
 
@@ -1980,6 +1984,11 @@
       var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var backToTop = document.getElementById('backToTop');
       if (backToTop) {
+        function updateBackToTop() {
+          backToTop.hidden = window.scrollY <= 200;
+        }
+        window.addEventListener('scroll', updateBackToTop, { passive: true });
+        updateBackToTop();
         backToTop.addEventListener('click', function () {
           window.scrollTo({ top: 0, behavior: 'auto' });
         });
