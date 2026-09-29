@@ -32,6 +32,7 @@
     }
 
     html {
+      scroll-behavior: smooth;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact
     }
@@ -744,6 +745,9 @@
     }
 
     @media (prefers-reduced-motion:reduce) {
+      html {
+        scroll-behavior: auto
+      }
 
       .bulb,
       .lamp-demo .bulb {
@@ -920,6 +924,33 @@
       outline: 2px solid var(--gold);
       outline-offset: 3px;
       border-radius: 2px
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 1000;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border: 1px solid #5a5143;
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: var(--dark);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(28, 26, 23, .2);
+      font: 600 13px var(--sans);
+      cursor: pointer
+    }
+
+    .back-to-top:hover {
+      background: #39342c
+    }
+
+    .back-to-top:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px
     }
 
     .status-mark {
@@ -1939,11 +1970,20 @@
       Dimming is tested in your home during the sample stage. Any light that doesn't dim smoothly stays a simple on/off
       at no extra cost. Network is quoted separately alongside your lighting tier.
     </footer>
+    <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">
+      <span aria-hidden="true">↑</span>Back to top
+    </button>
 
   </div>
   <script>
     (function () {
       var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var backToTop = document.getElementById('backToTop');
+      if (backToTop) {
+        backToTop.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'auto' });
+        });
+      }
 
       function equalizeTierRows() {
         var groups = document.querySelectorAll('.page > .tiers, .network-proposal > .tiers');

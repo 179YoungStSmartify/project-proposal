@@ -204,6 +204,19 @@ class ProposalTierVisualsTest(unittest.TestCase):
         self.assertIn("up to 2TB local recording", platinum)
         self.assertNotIn("2TB recording</span>", platinum)
 
+    def test_back_to_top_button_is_fixed_and_scrolls_to_page_top(self):
+        self.assertRegex(self.html, r'<button[^>]+id="backToTop"[^>]*aria-label="Back to top"')
+        self.assertRegex(self.html, r'\.back-to-top\s*\{[^}]*position:\s*fixed')
+        self.assertIn("backToTop.addEventListener('click'", self.html)
+        self.assertIn("window.scrollTo({ top: 0, behavior: 'auto' })", self.html)
+
+    def test_network_anchor_links_scroll_smoothly_and_respect_reduced_motion(self):
+        self.assertRegex(self.html, r'html\s*\{[^}]*scroll-behavior:\s*smooth')
+        self.assertRegex(
+            self.html,
+            r'@media\s*\(prefers-reduced-motion:\s*reduce\)\s*\{[^}]*html\s*\{[^}]*scroll-behavior:\s*auto',
+        )
+
     def test_network_tiers_are_separately_quoted_in_comparison(self):
         row = re.search(r'<td>Home network</td>(.*?)</tr>', self.html, re.DOTALL)
         self.assertIsNotNone(row)
